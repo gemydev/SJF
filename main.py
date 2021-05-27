@@ -1,6 +1,6 @@
-# from code.sjf_preemptive import*
+# from code.sjf_preemptive import *
 
-from sjf_preemptive import find_avg_time
+from code.sjf_preemptive import find_avg_time
 
 if __name__ == "__main__":
     # Process id's

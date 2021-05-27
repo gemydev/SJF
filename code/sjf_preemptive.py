@@ -1,32 +1,32 @@
 def find_waiting_time(processes, n, wt):
     burst_times = [0] * n
 
+    # put all burst_times of processes in list
     for i in range(n):
         burst_times[i] = processes[i][1]
+
     complete = 0
-    t = 0
-    minimum = 999999999
-    short = 0
-    check = False
+    time = 0
+    minimum = 999999999  # minimum burst time
+    short = 0            # the smallest process
+    check = False        # to know this process ended or no
 
     # Process until all processes gets
     # completed
     while complete != n:
 
-        # Find process with minimum remaining
-        # time among the processes that
-        # arrives till the current time`
+        # to determine the minimum burst time && the smallest process &&
         for j in range(n):
-            # if arrival time at [j] less than or equal t &&
+            # if arrival time at [j] less than or equal time &&
             # burst_times at [j] less than minimum &&
             # burst_times at [j] more than 0
-            if (processes[j][2] <= t) and (burst_times[j] < minimum) and burst_times[j] > 0:
+            if (processes[j][2] <= time) and (burst_times[j] < minimum) and burst_times[j] > 0:
                 minimum = burst_times[j]
                 short = j
                 check = True
 
         if not check:
-            t += 1
+            time += 1
             continue
 
         # Reduce remaining time by one
@@ -45,7 +45,7 @@ def find_waiting_time(processes, n, wt):
             complete += 1
             check = False
 
-            finish_time_of_current_process = t + 1
+            finish_time_of_current_process = time + 1
 
             # Calculate waiting time
             wt[short] = (finish_time_of_current_process - processes[short][1] -
@@ -55,7 +55,7 @@ def find_waiting_time(processes, n, wt):
                 wt[short] = 0
 
         # Increment time
-        t += 1
+        time += 1
 
 
 # Function to calculate turn around time

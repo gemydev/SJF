@@ -12,9 +12,8 @@ def find_waiting_time(processes, n, wt):
     check = False        # to know this process ended or no
 
     # Process until all processes gets
-    # completed
+    # completed >> when complete = num_of_processes
     while complete != n:
-
         # to determine the minimum burst time && the smallest process &&
         for j in range(n):
             # if arrival time at [j] less than or equal time &&
@@ -63,8 +62,6 @@ def find_turn_around_time(processes, n, wt, tat):
     # Calculating turnaround time
     for i in range(n):
         tat[i] = processes[i][1] + wt[i]
-
-    # Function to calculate average waiting
 
 
 # and turn-around times.

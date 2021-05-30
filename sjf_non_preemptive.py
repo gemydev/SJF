@@ -16,7 +16,7 @@ def sort_processes(num_of_processes, main_list):
             main_list[i] = swap_list
 
     list = []  # to store the new sorted elements
-    end = []   # to store the finish time for each process
+    end = []  # to store the finish time for each process
     last_time = 0
     cnt = 0  # the current number of picked elements
     # iterate over all elements and pick the suitable one 
@@ -62,11 +62,11 @@ def calculate_average_turn_around(num_of_processes, tt):
     return turn_around / num_of_processes
 
 
-def SJFNonPreemptive(num_of_processes, MainList):
+def SJFNonPreemptive(num_of_processes, main_list):
     GanttChart = []
     wt = []
     tt = []
-    List, end = sort_processes(num_of_processes, MainList)
+    List, end = sort_processes(num_of_processes, main_list)
 
     for i in range(0, num_of_processes):
         if i == 0:  # calculate the waiting time for each process
@@ -112,16 +112,15 @@ def GanttOutput(NumOfProcesses, List, end):
     print(above_line + "\n" + first_line + "\n" + under_line + "\n" + second_line)
 
 
-def run(BurstTimeList, NumOfProcesses):
+def run(burst_time_list, num_of_processes):
+    List, wt, tt, end = SJFNonPreemptive(num_of_processes, burst_time_list)
 
-    List, wt, tt, end = SJFNonPreemptive(NumOfProcesses, BurstTimeList)
-
-    print("\nProcess ID\tBurst Time\tArrival Time\tWaiting Time\tTurnaround Time")
-    for i in range(NumOfProcesses):
+    print("\n Process ID \t Burst Time \t Arrival Time \t Waiting Time \t Turnaround Time")
+    for i in range(num_of_processes):
         print(
-            str(List[i][0]) + "\t\t\t\t" + str(List[i][1]) + "\t\t\t\t" + str(List[i][2]) + "\t\t\t\t" + str(wt[i]) + "\t\t\t\t" + str(
-                tt[i]) + "\n")
+            str(List[i][0]) + "\t\t\t\t" + str(List[i][1]) + "\t\t\t\t" + str(List[i][2]) + "\t\t\t\t" + str(
+                wt[i]) + "\t\t\t\t" + str(tt[i]) + "\n")
     print("GanttChart :")
-    GanttOutput(NumOfProcesses, List, end)
-    print("waiting time = ", calculate_average_waiting(NumOfProcesses, wt))
-    print("Turn Around time = ", calculate_average_turn_around(NumOfProcesses, tt))
+    GanttOutput(num_of_processes, List, end)
+    print("waiting time = ", calculate_average_waiting(num_of_processes, wt))
+    print("Turn Around time = ", calculate_average_turn_around(num_of_processes, tt))

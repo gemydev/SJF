@@ -1,12 +1,34 @@
-# from code.sjf_preemptive import *
-
 from sjf_preemptive import find_avg_time
+from sjf_non_preemptive import run
 
 if __name__ == "__main__":
-    # Process id's
-    # list of [Process Num , Burst Time , Arrival Time ]
-    actual_processes = [[2, 12, 0], [3, 8, 3],
-                        [4, 4, 5], [1, 10, 10], [5, 6, 12]]
-    # n => Number of precesses
-    n = 5
-    find_avg_time(actual_processes, n)
+
+    select = 0
+    while True:
+        print('Select the number of which algorithm do you need!......')
+        print('1- Shortest Job First (SJF) preemptive')
+        print('2- Shortest Job First (SJF) non-preemptive')
+        select = int(input("Algorithm Number: "))
+        if select == 1 or select == 2:
+            break
+        else:
+            print('Invalid Input Number, you have to select only 1 or 2...')
+            print('------------------------------------------------------')
+            continue
+
+    NumOfProcesses = int(input("Enter the number of processes: "))
+    BurstTimeList = []
+    for i in range(0, NumOfProcesses):
+        newList = []
+        x = int(input("Enter the id for process : "))
+        newList.append(x)
+        x = int(input("Enter the burst time for process : "))
+        newList.append(x)
+        x = int(input("Enter the arrival time for process  : "))
+        newList.append(x)
+        BurstTimeList.append(newList)
+
+    if select == 1:
+        find_avg_time(BurstTimeList, NumOfProcesses)
+    elif select == 2:
+        run(BurstTimeList, NumOfProcesses)

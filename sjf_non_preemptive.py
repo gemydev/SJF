@@ -112,26 +112,16 @@ def GanttOutput(NumOfProcesses, List, end):
     print(above_line + "\n" + first_line + "\n" + under_line + "\n" + second_line)
 
 
-# Drive your code here 
-NumOfProcesses = int(input("Enter the number of processes: "))
-BurstTimeList = []
-for i in range(0, NumOfProcesses):
-    newList = []
-    x = int(input("Enter the id for process : "))
-    newList.append(x)
-    x = int(input("Enter the burst time for process : "))
-    newList.append(x)
-    x = int(input("Enter the arrival time for process  : "))
-    newList.append(x)
-    BurstTimeList.append(newList)
+def run(BurstTimeList, NumOfProcesses):
 
-List, wt, tt, end = SJFNonPreemptive(NumOfProcesses, BurstTimeList)
+    List, wt, tt, end = SJFNonPreemptive(NumOfProcesses, BurstTimeList)
 
-print("\nProcess ID\tBurst Time\tArrival Time\tWaiting Time\tTurnaround Time")
-for i in range(NumOfProcesses):
-    print(str(List[i][0]) + "\t\t" + str(List[i][1]) + "\t\t" + str(List[i][2]) + "\t\t" + str(wt[i]) + "\t\t" + str(
-        tt[i]) + "\n")
-print("GanttChart :")
-GanttOutput(NumOfProcesses, List, end)
-print("waiting time = ", calculate_average_waiting(NumOfProcesses, wt))
-print("Turn Around time = ", calculate_average_turn_around(NumOfProcesses, tt))
+    print("\nProcess ID\tBurst Time\tArrival Time\tWaiting Time\tTurnaround Time")
+    for i in range(NumOfProcesses):
+        print(
+            str(List[i][0]) + "\t\t" + str(List[i][1]) + "\t\t" + str(List[i][2]) + "\t\t" + str(wt[i]) + "\t\t" + str(
+                tt[i]) + "\n")
+    print("GanttChart :")
+    GanttOutput(NumOfProcesses, List, end)
+    print("waiting time = ", calculate_average_waiting(NumOfProcesses, wt))
+    print("Turn Around time = ", calculate_average_turn_around(NumOfProcesses, tt))

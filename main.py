@@ -20,11 +20,11 @@ if __name__ == "__main__":
     BurstTimeList = []
     for i in range(0, NumOfProcesses):
         newList = []
-        x = int(input("Enter the id for process : "))
+        x = int(input("Enter the id for process " + str(i+1) + " : "))
         newList.append(x)
-        x = int(input("Enter the burst time for process : "))
+        x = int(input("Enter the burst time for process " + str(i+1) + " : "))
         newList.append(x)
-        x = int(input("Enter the arrival time for process  : "))
+        x = int(input("Enter the arrival time for process " + str(i+1) + " : "))
         newList.append(x)
         BurstTimeList.append(newList)
 

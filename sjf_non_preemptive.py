@@ -16,7 +16,7 @@ def sort_processes(num_of_processes, main_list):
             main_list[i] = swap_list
 
     list = []  # to store the new sorted elements
-    end = []  # to store the finish time for each process
+    end = []   # to store the finish time for each process
     last_time = 0
     cnt = 0  # the current number of picked elements
     # iterate over all elements and pick the suitable one 
@@ -119,7 +119,7 @@ def run(BurstTimeList, NumOfProcesses):
     print("\nProcess ID\tBurst Time\tArrival Time\tWaiting Time\tTurnaround Time")
     for i in range(NumOfProcesses):
         print(
-            str(List[i][0]) + "\t\t" + str(List[i][1]) + "\t\t" + str(List[i][2]) + "\t\t" + str(wt[i]) + "\t\t" + str(
+            str(List[i][0]) + "\t\t\t\t" + str(List[i][1]) + "\t\t\t\t" + str(List[i][2]) + "\t\t\t\t" + str(wt[i]) + "\t\t\t\t" + str(
                 tt[i]) + "\n")
     print("GanttChart :")
     GanttOutput(NumOfProcesses, List, end)
